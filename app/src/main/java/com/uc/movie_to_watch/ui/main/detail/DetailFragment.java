@@ -11,6 +11,7 @@ import androidx.navigation.NavDirections;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -50,7 +51,7 @@ public class DetailFragment extends Fragment {
     private DetailViewModel detailViewModel;
     private List<Genre> genreFetchList;
     private String genreName = "";
-
+    private static final String TAG = "DetailFrag";
     public DetailFragment() {
     }
 
@@ -73,8 +74,8 @@ public class DetailFragment extends Fragment {
         title.setText(movie.getTitle());
         desc.setText(movie.getOverview());
 
-        getGenreName();
-        genre.setText(genreName);
+        Log.d(TAG, "YES YES: " + genreFetchList);
+
 
 //        button.setOnClickListener(view1 -> {
 //            NavDirections action = DetailFragmentDirections.actionBackToMovieFragment();
@@ -86,11 +87,14 @@ public class DetailFragment extends Fragment {
         @Override
         public void onChanged(List<Genre> genresList) {
             genreFetchList = genresList;
+            Log.d(TAG, "TES TES: " + genreFetchList);
+            getGenreName();
+            genre.setText(genreName);
         }
     };
 
     public void getGenreName() {
-//        if (genreFetchList != null) {
+        if (genreFetchList != null) {
             for (int i = 0; i < movie.getGenre_ids().size(); i++) {
                 for (int j = 0; j < genreFetchList.size(); j++) {
                     Genre genreObj = genreFetchList.get(j);
@@ -103,6 +107,6 @@ public class DetailFragment extends Fragment {
                     }
                 }
             }
-//        }
+        }
     }
 }
