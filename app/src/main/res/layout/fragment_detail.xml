@@ -6,13 +6,68 @@
     android:layout_height="match_parent"
     tools:context=".ui.main.detail.DetailFragment">
 
-    <Button
-        android:id="@+id/btn_backToMovie"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Back to Movie"
+    <ImageView
+        android:id="@+id/img_detailCover"
+        android:layout_width="0dp"
+        android:layout_height="300dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@tools:sample/avatars" />
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/img_detailCover">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/lbl_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:text="Judul Film"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/lbl_genre"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:text="Genre"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/lbl_title" />
+
+                <TextView
+                    android:id="@+id/lbl_desc"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum elementum placerat tortor ut fermentum. Suspendisse eget dapibus metus. Pellentesque maximus justo sem, sit amet varius est pharetra non. Vivamus vel felis leo. Nullam ut dignissim turpis. Curabitur consectetur eget sapien ac euismod. Maecenas ultricies nisi quam, sed bibendum turpis blandit tincidunt. Aenean tempus pellentesque odio in pharetra. Fusce a purus sit amet nunc auctor sodales sit amet quis orci.  Phasellus non hendrerit quam. Phasellus non viverra diam. Nullam sed volutpat metus, sit amet viverra sem. Suspendisse at laoreet libero. Ut iaculis varius dolor. Quisque eu libero ac felis hendrerit dictum et quis tortor. Duis tempus varius libero ut rhoncus. Aliquam erat volutpat. Lorem ipsum dolor sit amet, consectetur adipiscing elit.  Integer iaculis porttitor dolor sit amet eleifend. Vivamus malesuada tristique urna bibendum semper. Morbi tempor elit quis consectetur iaculis. In hac habitasse platea dictumst. Pellentesque risus eros, egestas vitae auctor sit amet, commodo id urna. Etiam sed quam vestibulum arcu pretium suscipit at fermentum ante. Phasellus tincidunt massa non convallis cursus. Proin odio arcu, molestie non suscipit quis, molestie consectetur tellus. Pellentesque eget augue sapien."
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/lbl_title" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
