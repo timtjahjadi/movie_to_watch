@@ -3,8 +3,10 @@
 
     <item
         android:id="@+id/nav_movie"
+        android:icon="@drawable/ic_baseline_local_movies_24"
         android:title="Movies" />
     <item
         android:id="@+id/nav_tv"
+        android:icon="@drawable/ic_baseline_live_tv_24"
         android:title="TV Shows" />
 </menu>

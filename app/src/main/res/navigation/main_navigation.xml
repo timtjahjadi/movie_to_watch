@@ -28,11 +28,16 @@
     <fragment
         android:id="@+id/detailFragment"
         android:name="com.uc.movie_to_watch.ui.main.detail.DetailFragment"
-        android:label="fragment_detail"
-        tools:layout="@layout/fragment_detail" >
+        android:label="Detail"
+        tools:layout="@layout/fragment_detail">
         <argument
             android:name="movie"
-            app:argType="com.uc.movie_to_watch.model.Movie" />
+            app:argType="com.uc.movie_to_watch.model.Movie"
+            app:nullable="true" />
+        <argument
+            android:name="tvShow"
+            app:argType="com.uc.movie_to_watch.model.TvShow"
+            app:nullable="true" />
     </fragment>
     <fragment
         android:id="@+id/nav_tv"
@@ -40,7 +45,7 @@
         android:label="@string/tvShows"
         tools:layout="@layout/fragment_tv" >
         <action
-            android:id="@+id/action_tvFragment_to_detailFragment"
+            android:id="@+id/actionTvFragmentToDetailFragment"
             app:destination="@id/detailFragment" />
     </fragment>
 </navigation>

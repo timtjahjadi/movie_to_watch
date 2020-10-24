@@ -17,4 +17,8 @@ public class DetailViewModel extends ViewModel {
     public LiveData<List<Genre>> getGenreList() {
         return genreRepo.getGenreList();
     }
+
+    public LiveData<List<Genre>> getGenreTvList() {
+        return genreRepo.getGenreTvList();
+    }
 }

@@ -71,7 +71,7 @@ public class MovieFragment extends Fragment {
                     @Override
                     public void onItemClicked(RecyclerView recyclerView, int position, View v) {
                         Movie movie = movieList.get(position);
-                        NavDirections action = MovieFragmentDirections.actionToDetailFragment(movie);
+                        NavDirections action = MovieFragmentDirections.actionToDetailFragment(movie, null);
                         Navigation.findNavController(v).navigate(action);
                     }
                 });

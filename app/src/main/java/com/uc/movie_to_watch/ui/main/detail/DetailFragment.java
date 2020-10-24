@@ -23,6 +23,7 @@ import com.bumptech.glide.Glide;
 import com.uc.movie_to_watch.R;
 import com.uc.movie_to_watch.model.Genre;
 import com.uc.movie_to_watch.model.Movie;
+import com.uc.movie_to_watch.model.TvShow;
 import com.uc.movie_to_watch.ui.main.movie.MovieFragmentDirections;
 import com.uc.movie_to_watch.ui.main.movie.MovieViewModel;
 import com.uc.movie_to_watch.util.Constants;
@@ -48,6 +49,8 @@ public class DetailFragment extends Fragment {
     TextView desc;
 
     private Movie movie;
+    private TvShow tvShow;
+
     private DetailViewModel detailViewModel;
     private List<Genre> genreFetchList;
     private String genreName = "";
@@ -66,21 +69,23 @@ public class DetailFragment extends Fragment {
         ButterKnife.bind(this, view);
 
         detailViewModel = ViewModelProviders.of(getActivity()).get(DetailViewModel.class);
-        detailViewModel.getGenreList().observe(requireActivity(), observeViewModel);
 
         movie = DetailFragmentArgs.fromBundle(getArguments()).getMovie();
 
-        Glide.with(getActivity()).load(Constants.BASE_IMG_URL + movie.getCover()).into(cover);
-        title.setText(movie.getTitle());
-        desc.setText(movie.getOverview());
+        movie = DetailFragmentArgs.fromBundle(getArguments()).getMovie();
+        tvShow = DetailFragmentArgs.fromBundle(getArguments()).getTvShow();
 
-        Log.d(TAG, "YES YES: " + genreFetchList);
-
-
-//        button.setOnClickListener(view1 -> {
-//            NavDirections action = DetailFragmentDirections.actionBackToMovieFragment();
-//            Navigation.findNavController(view).navigate(action);
-//        });
+        if (movie != null) {
+            detailViewModel.getGenreList().observe(requireActivity(), observeViewModel);
+            Glide.with(getActivity()).load(Constants.BASE_IMG_URL + movie.getCover()).into(cover);
+            title.setText(movie.getTitle());
+            desc.setText(movie.getOverview());
+        } else {
+            detailViewModel.getGenreTvList().observe(requireActivity(), observeViewModel);
+            Glide.with(getActivity()).load(Constants.BASE_IMG_URL + tvShow.getCover()).into(cover);
+            title.setText(tvShow.getName());
+            desc.setText(tvShow.getOverview());
+        }
     }
 
     private Observer<List<Genre>> observeViewModel = new Observer<List<Genre>>() {
@@ -95,13 +100,24 @@ public class DetailFragment extends Fragment {
 
     public void getGenreName() {
         if (genreFetchList != null) {
-            for (int i = 0; i < movie.getGenre_ids().size(); i++) {
-                for (int j = 0; j < genreFetchList.size(); j++) {
-                    Genre genreObj = genreFetchList.get(j);
-                    if (genreObj.getId() == movie.getGenre_ids().get(i)) {
-                        if (i < movie.getGenre_ids().size() - 1) {
-                            genreName += genreFetchList.get(j).getName() + ", ";
-                        } else {
+            if (movie != null) {
+                for (int i = 0; i < movie.getGenre_ids().size(); i++) {
+                    for (int j = 0; j < genreFetchList.size(); j++) {
+                        Genre genreObj = genreFetchList.get(j);
+                        if (genreObj.getId() == movie.getGenre_ids().get(i)) {
+                            if (i < movie.getGenre_ids().size() - 1) {
+                                genreName += genreFetchList.get(j).getName() + ", ";
+                            } else {
+                                genreName += genreFetchList.get(j).getName();
+                            }
+                        }
+                    }
+                }
+            } else {
+                for (int i = 0; i < tvShow.getGenre_ids().size(); i++) {
+                    for (int j = 0; j < genreFetchList.size(); j++) {
+                        Genre genreObj = genreFetchList.get(j);
+                        if (genreObj.getId() == tvShow.getGenre_ids().get(i)) {
                             genreName += genreFetchList.get(j).getName();
                         }
                     }

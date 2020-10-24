@@ -54,4 +54,27 @@ public class GenreRepo {
 
         return listGenre;
     }
+
+    public MutableLiveData<List<Genre>> getGenreTvList() {
+        MutableLiveData<List<Genre>> listGenre = new MutableLiveData<>();
+
+        service.getGenreTv().enqueue(new Callback<GenreResponse>() {
+            @Override
+            public void onResponse(Call<GenreResponse> call, Response<GenreResponse> response) {
+                Log.d(TAG, "TES TES: " + response.code());
+                if (response.isSuccessful()) {
+                    if (response.body() != null) {
+                        listGenre.postValue(response.body().getResults());
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<GenreResponse> call, Throwable t) {
+                Log.d(TAG, "onFailure: " + t.getMessage());
+            }
+        });
+
+        return listGenre;
+    }
 }

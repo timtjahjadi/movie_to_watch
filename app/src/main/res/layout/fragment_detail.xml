@@ -47,12 +47,15 @@
 
                 <TextView
                     android:id="@+id/lbl_genre"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="32dp"
                     android:text="Genre"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/lbl_title" />
+                    app:layout_constraintStart_toEndOf="@+id/textView"
+                    app:layout_constraintTop_toBottomOf="@+id/lbl_desc" />
 
                 <TextView
                     android:id="@+id/lbl_desc"
@@ -61,10 +64,20 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
                     android:layout_marginEnd="16dp"
-                    android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum elementum placerat tortor ut fermentum. Suspendisse eget dapibus metus. Pellentesque maximus justo sem, sit amet varius est pharetra non. Vivamus vel felis leo. Nullam ut dignissim turpis. Curabitur consectetur eget sapien ac euismod. Maecenas ultricies nisi quam, sed bibendum turpis blandit tincidunt. Aenean tempus pellentesque odio in pharetra. Fusce a purus sit amet nunc auctor sodales sit amet quis orci.  Phasellus non hendrerit quam. Phasellus non viverra diam. Nullam sed volutpat metus, sit amet viverra sem. Suspendisse at laoreet libero. Ut iaculis varius dolor. Quisque eu libero ac felis hendrerit dictum et quis tortor. Duis tempus varius libero ut rhoncus. Aliquam erat volutpat. Lorem ipsum dolor sit amet, consectetur adipiscing elit.  Integer iaculis porttitor dolor sit amet eleifend. Vivamus malesuada tristique urna bibendum semper. Morbi tempor elit quis consectetur iaculis. In hac habitasse platea dictumst. Pellentesque risus eros, egestas vitae auctor sit amet, commodo id urna. Etiam sed quam vestibulum arcu pretium suscipit at fermentum ante. Phasellus tincidunt massa non convallis cursus. Proin odio arcu, molestie non suscipit quis, molestie consectetur tellus. Pellentesque eget augue sapien."
+                    android:text="Description"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/lbl_title" />
+
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:text="Genre : "
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/lbl_genre" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </LinearLayout>

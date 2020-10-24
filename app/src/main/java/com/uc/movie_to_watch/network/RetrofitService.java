@@ -2,6 +2,7 @@ package com.uc.movie_to_watch.network;
 
 import com.uc.movie_to_watch.model.GenreResponse;
 import com.uc.movie_to_watch.model.MovieResponse;
+import com.uc.movie_to_watch.model.TvShowResponse;
 import com.uc.movie_to_watch.util.Constants;
 
 import retrofit2.Call;
@@ -32,4 +33,6 @@ public class RetrofitService {
         return api.getMovies(Constants.API_KEY);
     }
     public Call<GenreResponse> getGenre() { return api.getGenre(Constants.API_KEY); }
+    public Call<GenreResponse> getGenreTv() { return api.getGenreTv(Constants.API_KEY); }
+    public Call<TvShowResponse> getTvs() { return api.getTvs(Constants.API_KEY); }
 }
